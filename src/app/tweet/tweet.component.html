@@ -1,0 +1,9 @@
+<div class="tweet">
+  <div>
+    UserId: {{tweet.getUser()}}
+  </div>
+
+  <div>
+      Title: <span class="tweet_redirector" (click)="redirectToTweet(tweet);">{{tweet.getTitle()}}</span>
+  </div>
+</div>

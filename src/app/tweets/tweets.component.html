@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="controls">
+      <div class="row">
+          <div class="logout col-12 col-sm-6 col-md-6 col-lg-4">
+              <button (click)="routeToLogout();" class="btn btn-primary">Logout</button>
+          </div>
+          <div class="search col-12 col-sm-6 col-md-6 col-lg-8">
+              <input placeholder="Search..." [(ngModel)]="searchQuery" (keyup)="filterTweets()">
+          </div>
+      </div>
+  </div>
+  <div class="tweets">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4" *ngFor="let tweet of tweetsToShow">
+          <app-tweet [tweet]="tweet"></app-tweet>
+      </div>
+    </div>
+  </div>
+</div>
