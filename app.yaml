@@ -1,0 +1,19 @@
+appname: AdpSwiv
+version: "1.0.10"
+
+# SDK Configuration
+sdk_version: node_8.0.0.1
+handler: build/server/www.js#Server
+automator_scripts: 'dl-node-scripts'
+
+npm:
+  registry: "https://registry.npmjs.org/"
+  loglevel: "verbose"
+
+# Opal Bus Configuration
+servicename: adp
+interfaces:
+  swiv:
+    authentication: false
+    authorisation: false
+    ssl: false
