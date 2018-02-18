@@ -18,6 +18,7 @@ import { TweetDetailsComponent } from './tweet-details/tweet-details.component';
 import { TweetService } from './tweet.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     LogoutComponent,
     TweetDetailsComponent,
     PageNotFoundComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

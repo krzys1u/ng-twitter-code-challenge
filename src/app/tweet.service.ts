@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Tweet } from "./models";
+import { Tweet, TweetDataInterface } from "./models";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, flatMap, } from 'rxjs/operators'
 import { MessageBusService } from './message-bus.service';
 import { Alert, AlertType } from './models/Alert';
-import { TweetDataInterface } from './models/Tweet';
 
 @Injectable()
 export class TweetService {

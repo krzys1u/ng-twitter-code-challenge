@@ -5,13 +5,13 @@
               <a class="btn btn-primary" routerLink="/logout">Logout</a>
           </div>
           <div class="search col-12 col-sm-6 col-md-6 col-lg-8">
-              <input placeholder="Search..." [(ngModel)]="searchQuery" (keyup)="filterTweets()">
+              <input placeholder="Search..." [(ngModel)]="searchQuery">
           </div>
       </div>
   </div>
   <div class="tweets">
     <div class="row">
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4" *ngFor="let tweet of tweetsToShow">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4" *ngFor="let tweet of tweets | searchFilter:searchQuery">
           <app-tweet [tweet]="tweet"></app-tweet>
       </div>
     </div>
