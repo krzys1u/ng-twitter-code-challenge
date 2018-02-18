@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Tweet } from '../models';
+import { TweetService } from '../tweet.service';
 
 @Component({
   selector: 'app-tweets',
@@ -12,14 +13,8 @@ export class TweetsComponent implements OnInit {
   public tweetsToShow: Array<Tweet> = [];
   public searchQuery: string;
 
-  constructor() {
-    ['a','b','c','d','e','f','g','h','i','j','k'].forEach(
-      (item, index) => this.tweets.push(
-        new Tweet(index, item, index, 'body of ' + item)
-      )
-    );
+  constructor(private tweetService: TweetService) {
 
-    this.filterTweets();
   }
 
   public filterTweets(): void {
@@ -32,11 +27,20 @@ export class TweetsComponent implements OnInit {
       }
   }
 
+  loadTweets(): void {
+    ['a','b','c','d','e','f','g','h','i','j','k'].forEach((item, index) => {
+        ((itm, idx) => {
+            setTimeout(() => {
+                this.tweets.push(
+                  new Tweet(index, item, index, 'body of ' + item)
+                );
+                this.filterTweets();
+            }, idx * 1000);
+        })(item, index);
+    });
+  }
+
   ngOnInit() {
+      this.loadTweets();
   }
-
-  fetchTweets() {
-
-  }
-
 }

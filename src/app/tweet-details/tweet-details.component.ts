@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tweet } from '../models/Tweet';
 import { ActivatedRoute } from '@angular/router';
+import { TweetService } from '../tweet.service';
 
 @Component({
   selector: 'app-tweet-details',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TweetDetailsComponent implements OnInit {
   public tweet: Tweet = new Tweet(1,'asd', 2,' Lorem impsum dolor ...');
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private tweetService: TweetService) { }
 
   ngOnInit() {
       console.log(this.fetchTweet());
