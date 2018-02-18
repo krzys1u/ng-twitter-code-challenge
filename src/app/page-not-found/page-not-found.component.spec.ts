@@ -22,4 +22,14 @@ describe('PageNotFoundComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render 404 body', async(() => {
+    const fixture = TestBed.createComponent(PageNotFoundComponent);
+
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('div.not_found_body').textContent).toContain('Page not found go to the tweets or login page');
+    expect(compiled.querySelector('div.error_code').textContent).toContain('404');
+
+  }));
 });

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlertComponent } from './alert.component';
+import { AlertType, Alert } from '../models';
 
 describe('AlertComponent', () => {
   let component: AlertComponent;
@@ -19,7 +20,15 @@ describe('AlertComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should render header and body', async(() => {
+    const fixture = TestBed.createComponent(AlertComponent);
+
+    let component = fixture.componentInstance;
+    component.alert = new Alert(AlertType.SUCCESS, 'Header', 'Body');
+
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h4').textContent).toContain('Header!');
+    expect(compiled.querySelector('p').textContent).toContain('Body');
+  }));
 });

@@ -23,7 +23,7 @@ export class Alert {
       return this.description;
   }
   public getType(): AlertType {
-      return this.type;
+      return this.type || AlertType.SUCCESS;
   }
 
 }

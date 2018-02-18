@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from './models';
-import { UserService } from './user.service'
 import { Router } from '@angular/router';
 import { MessageBusService } from './message-bus.service';
 
