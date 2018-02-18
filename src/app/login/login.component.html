@@ -1,3 +1,18 @@
-<p>
-  login works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4"></div>
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="row input_row">
+                <input placeholder="Login" [(ngModel)]="login">
+            </div>
+            <div class="row input_row">
+                <input type="password" placeholder="Password" [(ngModel)]="password">
+            </div>
+            <div class="row">
+                <button (click)="onClickLogin();" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4"></div>
+    </div>
+</div>
+<app-alerts></app-alerts>

@@ -9,7 +9,11 @@ import { TweetsComponent } from './tweets/tweets.component';
 import { TweetComponent } from './tweet/tweet.component';
 
 import { FormsModule } from '@angular/forms';
-import { ErrorAlertComponent } from './error-alert/error-alert.component';
+import { AlertsComponent } from './alerts/alerts.component';
+import { AlertComponent } from './alert/alert.component';
+import { MessageBusService } from './message-bus.service';
+import { UserService } from './user.service';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +21,16 @@ import { ErrorAlertComponent } from './error-alert/error-alert.component';
     LoginComponent,
     TweetsComponent,
     TweetComponent,
-    ErrorAlertComponent
+    AlertsComponent,
+    AlertComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AlertModule.forRoot()
   ],
-  providers: [],
+  providers: [MessageBusService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

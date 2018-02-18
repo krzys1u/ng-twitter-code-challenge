@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { User } from './models';
+import {UserService} from "./user.service";
 
 @Component({
   selector: 'app-root',
@@ -8,19 +9,18 @@ import { User } from './models';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  public isLogged: boolean = this.checkLogged();
-
-  constructor() {
+  constructor( private userService: UserService) {
       if (!this.checkLogged()){
           //redirect to login
       }
   }
 
   public checkLogged(): boolean{
+      console.log('user', this.getUser());
       return this.getUser() !== null;
   }
 
   public getUser(): User{
-      return null;
+      return this.userService.getUser();
   }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
-import { User } from '../models';
+import { Component, OnInit} from '@angular/core';
+import { User, Alert, AlertType } from '../models';
+import { MessageBusService } from '../message-bus.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,34 +12,52 @@ export class LoginComponent implements OnInit {
   public login: string = '';
   public password: string = '';
 
-  constructor() { }
+  constructor(private messageBus: MessageBusService, private userService: UserService) {}
 
   ngOnInit() {
   }
 
   public saveUserToSessionStorage(user: User): void {
-      console.log('save user', user);
+      this.userService.saveUser(user);
   }
 
   public onClickLogin(): void {
-      if(this.checkLoginData()){
-          let user: User = {
-              id: Math.floor((Math.random() * 100) + 1),
-              name: this.login
-          };
+      if(!User.checkUserLogin(this.login)) {
+          this.messageBus.sendMessage(
+            new Alert(
+              AlertType.ERROR,
+              'Login error',
+              'Login should contain at least 5 characters'
+            )
+          );
 
-          this.saveUserToSessionStorage(user);
-
-          // redirect to /
+          return;
       }
-  }
 
-  public checkPassword(): boolean {
-      return true; //password contains 8 characters, at least one small letter, at least one capital letter, at least one number
-  }
+      if(!User.checkUserPassword(this.password)) {
+        this.messageBus.sendMessage(
+            new Alert(
+              AlertType.ERROR,
+              'Password error',
+              'Password should contains 8 characters, at least one small letter, at least one capital letter, at least one number'
+            )
+          );
 
-  public checkLoginData(): boolean {
-      return this.login.length > 5 && this.checkPassword();
-  }
+          return;
+      }
 
+      let user: User = new User(Math.floor((Math.random() * 100) + 1),this.login);
+
+      this.saveUserToSessionStorage(user);
+
+      this.messageBus.sendMessage(
+          new Alert(
+            AlertType.SUCCESS,
+            'Login successful',
+            'You will be redirecting to application'
+          )
+      );
+
+      // timeout 0.5s redirect to /
+  }
 }
