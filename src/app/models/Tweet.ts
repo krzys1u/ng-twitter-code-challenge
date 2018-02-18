@@ -1,3 +1,10 @@
+export interface TweetDataInterface {
+    id: number;
+    userId: number;
+    title: string;
+    body: string;
+}
+
 export class Tweet {
   private id: number;
   private userId: number;
@@ -25,6 +32,19 @@ export class Tweet {
 
   public getBody(): string {
       return this.body;
+  }
+
+  public setId(id: number): void {
+      this.id = id;
+  }
+  public setUserId(userId: number): void {
+      this.userId = userId;
+  }
+  public setTitle(title: string): void {
+      this.title = title;
+  }
+  public setBody(body: string): void {
+      this.body = body;
   }
 
   public matchToQuery(query): boolean{

@@ -28,16 +28,16 @@ export class TweetsComponent implements OnInit {
   }
 
   loadTweets(): void {
-    ['a','b','c','d','e','f','g','h','i','j','k'].forEach((item, index) => {
-        ((itm, idx) => {
-            setTimeout(() => {
-                this.tweets.push(
-                  new Tweet(index, item, index, 'body of ' + item)
-                );
-                this.filterTweets();
-            }, idx * 1000);
-        })(item, index);
-    });
+      this.tweetService.fetchAllTweets().subscribe(tweets => {
+          tweets.forEach((item, index) => {
+              ((itm, idx) => {
+                  setTimeout(() => {
+                      this.tweets.push(item);
+                      this.filterTweets();
+                  }, idx * 1000);
+              })(item, index);
+          });
+      });
   }
 
   ngOnInit() {

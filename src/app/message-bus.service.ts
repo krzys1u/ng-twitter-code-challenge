@@ -20,8 +20,10 @@ export class MessageBusService {
       this.subscribers.set(type, listeners);
   }
 
-  public sendMessage(message: any): void{
-      let type = message.constructor.name;
+  public sendMessage(message: any, type: string = null): void{
+      if (!type) {
+          type = message.constructor.name;
+      }
 
       this.subscribers.get(type).forEach(fn => fn(message));
   }

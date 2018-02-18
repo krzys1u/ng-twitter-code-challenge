@@ -9,16 +9,19 @@ import { TweetService } from '../tweet.service';
   styleUrls: ['./tweet-details.component.less']
 })
 export class TweetDetailsComponent implements OnInit {
-  public tweet: Tweet = new Tweet(1,'asd', 2,' Lorem impsum dolor ...');
+  public tweet: Tweet;
   constructor(private route: ActivatedRoute, private tweetService: TweetService) { }
 
   ngOnInit() {
-      console.log(this.fetchTweet());
+      this.fetchTweet();
   }
 
-  public fetchTweet(): string {//Tweet {
+  public fetchTweet(): void {
     let id = this.route.snapshot.paramMap.get('id');
-    return id;
+
+    this.tweetService.fetchTweet(id).subscribe(tweetData => {
+        this.tweet = new Tweet(tweetData.id, tweetData.title, tweetData.userId, tweetData.body);
+    });
   }
 
 }
