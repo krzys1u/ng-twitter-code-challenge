@@ -17,8 +17,4 @@ export class TweetComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  redirectToTweet(tweet: Tweet): void {
-      console.log(tweet);
-  }
 }

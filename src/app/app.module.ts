@@ -14,6 +14,9 @@ import { AlertComponent } from './alert/alert.component';
 import { MessageBusService } from './message-bus.service';
 import { UserService } from './user.service';
 import { LogoutComponent } from './logout/logout.component';
+import { TweetDetailsComponent } from './tweet-details/tweet-details.component';
+import { TweetService } from './tweet.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,14 +26,16 @@ import { LogoutComponent } from './logout/logout.component';
     TweetComponent,
     AlertsComponent,
     AlertComponent,
-    LogoutComponent
+    LogoutComponent,
+    TweetDetailsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    AppRoutingModule
   ],
-  providers: [MessageBusService, UserService],
+  providers: [MessageBusService, UserService, TweetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

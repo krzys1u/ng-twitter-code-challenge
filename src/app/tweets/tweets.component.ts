@@ -32,10 +32,6 @@ export class TweetsComponent implements OnInit {
       }
   }
 
-  public routeToLogout(): void {
-      console.log('logout');
-  }
-
   ngOnInit() {
   }
 

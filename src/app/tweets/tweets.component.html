@@ -2,7 +2,7 @@
   <div class="controls">
       <div class="row">
           <div class="logout col-12 col-sm-6 col-md-6 col-lg-4">
-              <button (click)="routeToLogout();" class="btn btn-primary">Logout</button>
+              <a class="btn btn-primary" routerLink="/logout">Logout</a>
           </div>
           <div class="search col-12 col-sm-6 col-md-6 col-lg-8">
               <input placeholder="Search..." [(ngModel)]="searchQuery" (keyup)="filterTweets()">
@@ -18,3 +18,4 @@
   </div>
 </div>
 <app-alerts></app-alerts>
+<router-outlet></router-outlet>

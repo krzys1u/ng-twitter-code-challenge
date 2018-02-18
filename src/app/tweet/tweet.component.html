@@ -4,6 +4,6 @@
   </div>
 
   <div>
-      Title: <span class="tweet_redirector" (click)="redirectToTweet(tweet);">{{tweet.getTitle()}}</span>
+      Title: <a href="" class="tweet_redirector" routerLink="/tweet/{{tweet.getId()}}">{{tweet.getTitle()}}</a>
   </div>
 </div>

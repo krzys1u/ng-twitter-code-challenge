@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { User, Alert, AlertType } from '../models';
 import { MessageBusService } from '../message-bus.service';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   public login: string = '';
   public password: string = '';
 
-  constructor(private messageBus: MessageBusService, private userService: UserService) {}
+  constructor(private messageBus: MessageBusService, private userService: UserService, private router: Router) {}
 
   ngOnInit() {
   }
@@ -58,6 +59,6 @@ export class LoginComponent implements OnInit {
           )
       );
 
-      // timeout 0.5s redirect to /
+      this.router.navigate(['/tweets']);
   }
 }
