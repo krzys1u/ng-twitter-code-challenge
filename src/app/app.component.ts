@@ -11,15 +11,10 @@ import { MessageBusService } from './message-bus.service';
 })
 export class AppComponent {
   constructor(
-      private userService: UserService,
       private router: Router,
       private messageBus: MessageBusService
   ) {
       this.messageBus.addListener('redirect', this.redirectTo.bind(this));
-
-      if (!this.userService.isUserLogged()){
-          this.router.navigate(['/login']);
-      }
   }
 
   redirectTo(route: string){

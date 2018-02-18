@@ -19,6 +19,7 @@ import { TweetService } from './tweet.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchPipe } from './search.pipe';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { SearchPipe } from './search.pipe';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [MessageBusService, UserService, TweetService],
+  providers: [MessageBusService, UserService, TweetService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
