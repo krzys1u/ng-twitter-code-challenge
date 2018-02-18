@@ -10,20 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor( private userService: UserService, private router: Router) {
-    let route: string = '/login';
-    console.log('check');
-    if (this.checkLogged()){
-          route = '/tweets';
+    if (!this.userService.isUserLogged()){
+        this.router.navigate(['/login']);
     }
-    this.router.navigate([route]);
-  }
-
-  public checkLogged(): boolean{
-      return this.getUser() !== null;
-  }
-
-
-  public getUser(): User{
-      return this.userService.getUser();
   }
 }

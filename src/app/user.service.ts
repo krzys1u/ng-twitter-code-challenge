@@ -7,6 +7,10 @@ export class UserService {
 
   constructor() { }
 
+  public isUserLogged(): boolean {
+      return this.getUser() !== null;
+  }
+
   public saveUser(user: User): void {
       sessionStorage.setItem(UserService.USERKEY, JSON.stringify(user));
   }

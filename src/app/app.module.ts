@@ -17,6 +17,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { TweetDetailsComponent } from './tweet-details/tweet-details.component';
 import { TweetService } from './tweet.service';
 import { AppRoutingModule } from './/app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AppRoutingModule } from './/app-routing.module';
     AlertComponent,
     LogoutComponent,
     TweetDetailsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

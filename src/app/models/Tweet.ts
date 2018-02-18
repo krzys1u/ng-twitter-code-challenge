@@ -1,12 +1,12 @@
 export class Tweet {
   private id: number;
-  private user: string;
+  private userId: number;
   private title: string;
   private body: string;
 
-  constructor(id, title, user, body){
+  constructor(id: number, title: string, userId: number, body: string){
     this.id = id;
-    this.user = user;
+    this.userId = userId;
     this.title = title;
     this.body = body;
   }
@@ -15,8 +15,8 @@ export class Tweet {
       return this.id;
   }
 
-  public getUser(): string {
-      return this.user;
+  public getUserId(): number {
+      return this.userId;
   }
 
   public getTitle(): string {

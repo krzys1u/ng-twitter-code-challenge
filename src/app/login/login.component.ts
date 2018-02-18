@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
   constructor(private messageBus: MessageBusService, private userService: UserService, private router: Router) {}
 
   ngOnInit() {
+    if (this.userService.isUserLogged()) {
+      this.router.navigate(['/']);
+    }
   }
 
   public saveUserToSessionStorage(user: User): void {
@@ -59,6 +62,6 @@ export class LoginComponent implements OnInit {
           )
       );
 
-      this.router.navigate(['/tweets']);
+      setTimeout(() => this.router.navigate(['/']),2000);
   }
 }
